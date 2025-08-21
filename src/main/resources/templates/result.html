@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #2563eb;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1e40af;
+        }
+        a {
+            text-decoration: none;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Calculation Result</h1>
+
+    <div th:if="${error != null}" style="color:#b91c1c; font-weight:700;">
+        <p th:text="${error}">Error text</p>
+    </div>
+
+    <div th:if="${result != null}">
+        <p><strong>Operation:</strong> <span th:text="${operation}"></span></p>
+        <p><strong>Num 1:</strong> <span th:text="${num1}"></span></p>
+        <p><strong>Num 2:</strong> <span th:text="${num2}"></span></p>
+        <p><strong>Result:</strong> <span th:text="${result}"></span></p>
+    </div>
+
+    <hr>
+    <form th:action="@{/calculate}" method="POST">
+        <label for="num1">Enter Number 1:</label>
+        <input type="number" id="num1" name="num1" step="any" th:value="${num1}" required>
+
+        <label for="num2">Enter Number 2:</label>
+        <input type="number" id="num2" name="num2" step="any" th:value="${num2}" required>
+
+        <div>
+            <button type="submit" name="operation" value="add">Add</button>
+            <button type="submit" name="operation" value="sub">Subtract</button>
+            <button type="submit" name="operation" value="mul">Multiply</button>
+            <button type="submit" name="operation" value="div">Divide</button>
+        </div>
+    </form>
+
+    <p><a th:href="@{/}">← Back to Home</a></p>
+</div>
+</body>
+</html>
