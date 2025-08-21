@@ -13,6 +13,6 @@ A simple calculator web application built using **Spring Boot** and **Thymeleaf*
 - Thymeleaf
 - Maven
 
-![HonePage Screenshot](homepage.png)  
-![ContentPage Screenshot](resultpage.png) 
+![HomePage Screenshot](homepage.png)  
+![resultpage Screenshot](resultpage.png) 
 
